@@ -33,6 +33,6 @@ def echo_all(message):
 
         bot.reply_to(message, answer)
     except:
-        bot.reply_to(message, '🤷‍♂️Увы, но Я не смог найти '+ message.text)
+        bot.reply_to(message, '🤷‍♂️Увы, но Я не смог  найти '+ message.text)
 
 bot.polling(none_stop=True)
