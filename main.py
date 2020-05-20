@@ -34,7 +34,7 @@ def echo_all(message):
         answer += '🚰____➡️ ' + str(round(hum)) + ' %' + '\n\n'
         answer += '🌬___ ➡️ ' + str(wind) + ' М.С' + '\n\n'
 
-        #добавляем кнопку
+        # добавляем кнопку
         # клавиатура
         markup = types.ReplyKeyboardMarkup(True, True)
         btn = message.text
