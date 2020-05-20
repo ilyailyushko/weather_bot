@@ -8,11 +8,14 @@ import pyowm
 owm = pyowm.OWM(owm_token, language='ru')  # You MUST provide a valid API key
 bot = telebot.TeleBot(tg_bot_token)
 
-# Бот здоровается с новым юзером
+
+# Бот здоровается с юзером, при старте
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
+
     bot.reply_to(message, "👋Привет, Напиши мне город или страну,"+
                           "а я расскажу про погоду на данный момент!")
+
 
 # Бот Принимает название локации, проверяем есть ли такой город в апи OWM.
 # Если Локация найдена - показываем погоду, если не найдена,
@@ -31,7 +34,13 @@ def echo_all(message):
         answer += '🚰____➡️ ' + str(round(hum)) + ' %' + '\n\n'
         answer += '🌬___ ➡️ ' + str(wind) + ' М.С' + '\n\n'
 
-        bot.reply_to(message, answer)
+        #добавляем кнопку
+        # клавиатура
+        markup = types.ReplyKeyboardMarkup(True, True)
+        btn = message.text
+        markup.row(btn)
+
+        bot.reply_to(message, answer, reply_markup=markup)
     except:
         bot.reply_to(message, '🤷‍♂️Увы, но Я не смог найти '+ message.text)
 
